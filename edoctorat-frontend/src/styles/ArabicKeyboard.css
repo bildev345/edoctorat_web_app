@@ -1,0 +1,99 @@
+/* Container principal */
+.keyboard-container {
+  /* Position par défaut (Desktop) */
+  position: absolute;
+  z-index: 9999; /* Très haut pour passer au-dessus de tout */
+  background-color: #dcdfe3;
+  padding: 5px;
+  border-radius: 6px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+  border: 1px solid #b0b5be;
+  
+  /* Largeur optimisée */
+  width: 350px;       
+  
+  /* Centrage par défaut sous l'input */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  margin-top: 5px;
+}
+
+/* Triangle décoratif (Desktop seulement) */
+.keyboard-arrow {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #dcdfe3;
+}
+
+/* --- TOUCHES --- */
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 3px;
+}
+
+.keyboard-key {
+  background: #fff;
+  border: 1px solid #bda8a8;
+  border-radius: 4px;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.95rem; /* Texte lisible */
+  font-weight: 600;
+  padding: 6px 0;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 0 #888;
+  transition: transform 0.1s;
+  user-select: none;
+  min-width: 25px;
+}
+
+.keyboard-key:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.key-action { background: #aab2bd; color: white; min-width: 40px; font-size: 0.8rem; }
+.key-space { flex-grow: 4; }
+.key-close { background: #E74C3C; color: white; border: none; box-shadow: 0 2px 0 #c0392b; }
+
+/* --- RESPONSIVE : MODE "DOCK" (Fixé en bas) --- */
+/* Dès que l'écran est plus petit que 768px (Tablette & Mobile), 
+   on colle le clavier en bas de l'écran pour qu'il ne dépasse pas */
+@media (max-width: 768px) {
+  .keyboard-container {
+    position: fixed; /* Fixé par rapport à l'écran */
+    bottom: 0;       /* Collé en bas */
+    left: 0;
+    width: 100%;     /* Prend toute la largeur */
+    max-width: 100%;
+    border-radius: 15px 15px 0 0; /* Arrondi seulement en haut */
+    transform: none; /* On annule le centrage relatif */
+    top: auto;       /* On annule le positionnement top */
+    margin-top: 0;
+    padding: 10px 5px 20px 5px; /* Plus d'espace en bas pour les doigts */
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease-out;
+  }
+
+  /* On cache la flèche sur mobile car le clavier n'est plus sous l'input */
+  .keyboard-arrow { display: none; }
+  
+  .keyboard-key {
+    padding: 10px 0; /* Touches plus hautes pour le tactile */
+    font-size: 1rem;
+  }
+}
+
+/* Petite animation d'apparition */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
