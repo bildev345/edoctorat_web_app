@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { useSendNotifications } from "../../../hooks/directeurLabo/useNotifications";
 import { useCommissions } from "../../../hooks/directeurLabo/useCommissions";
 import SujetCandidatsModal from "../../../components/directeurLabo/sujetCandidatsModal";
-import ConfirmSendModal from "../../../components/directeurLabo/ConfirmSendModal";
-
+import ConfirmSendModal from "../../../components/directeurLabo/confirmSendModal";
 const PAGE_SIZE = 5;
 
 export default function CommissionsNotificationsPage() {

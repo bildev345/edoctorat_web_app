@@ -308,8 +308,8 @@ graph TD
 
 ## 👥 Contributeurs
 
-- **Équipe de développement** - [Liste des contributeurs]
-- **Encadrement académique** - [Noms des encadrants]
+- **Équipe de développement** - El Arfaoui Bilal - Elbaroudi Layla - Hafssa Salmi - Malak elouadeghry
+- **Encadrement académique** - Professeur Abdelali Ibriz
 - **Testeurs** - [Noms des testeurs]
 
 ## 📄 Licence

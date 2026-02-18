@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function PostulesTable({ data, isLoading }) {
+
   if (isLoading) {
     return (
       <div className="text-center my-4">
@@ -31,7 +32,7 @@ export default function PostulesTable({ data, isLoading }) {
             <tr key={`${row.candidatId}-${row.sujetTitre}`}>
               <td>
                 <Link
-                  to={`/candidats/${row.candidatId}`}
+                  to={`${row.candidatId}`}
                   className="text-decoration-none fw-semibold"
                 >
                   {row.candidatCne}
@@ -40,7 +41,7 @@ export default function PostulesTable({ data, isLoading }) {
               <td>{row.candidatNom}</td>
               <td>{row.sujetTitre}</td>
               <td>{row.directeurNom}</td>
-              <td>{row.coDirecteurNom}</td>
+              <td>{row.coDirecteurNom !== null ? row.coDirecteurNom : "None"}</td>
               <td>{row.formationDoctoraleTitre}</td>
             </tr>
           ))}

@@ -9,7 +9,6 @@ export default function PostulesPage() {
   const size = 10;
 
   const { data, isLoading, isError } = usePostules({ page, size });
-
   if (isError) {
     return (
       <div className="alert alert-danger">
@@ -22,7 +21,7 @@ export default function PostulesPage() {
     <div className="container mt-4">
       <h4 className="mb-3">Candidats postulés</h4>
 
-      <PostulesTable data={data} isLoading={isLoading} />
+      <PostulesTable data={data?.data} isLoading={isLoading} />
 
       <Pagination
         page={page}

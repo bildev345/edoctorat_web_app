@@ -10,17 +10,18 @@ import org.example.doctoratrestapi.dtos.sujet.SujetPoleDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.lowagie.text.Chunk;
+import org.example.doctoratrestapi.directeurPole.services.ExportPdfService;
+import java.time.LocalDateTime;
+/*import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import org.example.doctoratrestapi.directeurPole.services.ExportPdfService;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+*/
 import java.util.List;
 
 @Service

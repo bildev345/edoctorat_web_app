@@ -1,4 +1,5 @@
 export default function SujetTable({records}) {
+  console.log(records);
   return (
     <div className="table-responsive">
       <table className="table table-bordered table-hover align-middle">
@@ -21,11 +22,11 @@ export default function SujetTable({records}) {
             </tr>
           ) : (
             records?.map((r, index) => (
-              <tr key={r.id}>
+              <tr key={r.sujetId}>
                 <td>{index + 1}</td>
                 <td>{r.titre}</td>
                 <td>{r.directeur}</td>
-                <td>{r.coDirecteur !== "" ? r.coDirecteur : "None"}</td>
+                <td>{r.coDirecteur !== null ? r.coDirecteur : "None"}</td>
                 <td>{r.titreFormationDoctorale}</td>
               </tr>
             ))

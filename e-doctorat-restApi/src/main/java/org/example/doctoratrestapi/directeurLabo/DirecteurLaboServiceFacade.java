@@ -21,7 +21,7 @@ import java.util.List;
 public interface DirecteurLaboServiceFacade {
     Page<CandidatPostulesDto> getCandidatsByLabo(Pageable pageable);
     //public List<SujetLaboDto> getSujetsByLabo();
-    PageResponseDto<SujetLaboDto> getSujetsByLabo(Pageable pageable);
+    PageResponseDto<SujetLaboDto> getSujetsByLabo(Pageable pageable, String filter);
     List<SujetModel> getSujetsByLabo();
     void addSujet(SujetLaboDtoCreation sujetDto);
     Page<ResultatExaminationDto> getResultatExaminations(Pageable pageable);

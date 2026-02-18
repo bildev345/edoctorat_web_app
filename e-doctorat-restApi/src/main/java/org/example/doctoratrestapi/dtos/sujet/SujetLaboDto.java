@@ -5,5 +5,5 @@ public record SujetLaboDto(
         String titre,
         String directeur,
         String coDirecteur,
-        String titreFormationDoctoral
+        String titreFormationDoctorale
 ) { }

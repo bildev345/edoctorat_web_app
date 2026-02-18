@@ -5,5 +5,6 @@ public record SujetLaboDtoCreation(
         String description,
         Long directeurId,
         Long coDirecteurId,
-        Long FormationDoctoralId)
+        Long formationDoctoraleId
+)
 { }

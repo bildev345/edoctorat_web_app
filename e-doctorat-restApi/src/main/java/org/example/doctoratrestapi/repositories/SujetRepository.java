@@ -82,5 +82,14 @@ public interface SujetRepository extends JpaRepository<SujetModel, Long> {
     // 2. Search by Title AND Labo (New Requirement)
     // Note: Traversing Sujet -> Professeur -> Laboratoire
     Page<SujetModel> findByProfesseurLaboratoireIdAndTitreContainingIgnoreCase(Long laboId, String titre, Pageable pageable);
-
+    
+    @Query("SELECT s FROM SujetModel s " +
+           "WHERE s.professeur.laboratoire.id = :laboId " +
+           "AND LOWER(s.titre) LIKE LOWER(CONCAT('%', :filter, '%')) " +
+           "ORDER BY s.id DESC")
+    Page<SujetModel> getSujetsByLaboIdAndTitreContaining(
+            @Param("laboId") Long laboId, 
+            @Param("filter") String filter, 
+            Pageable pageable
+    );
 }

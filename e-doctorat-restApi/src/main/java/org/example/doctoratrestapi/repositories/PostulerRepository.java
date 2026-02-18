@@ -1,6 +1,5 @@
 package org.example.doctoratrestapi.repositories;
 
-import org.example.doctoratrestapi.dtos.candidat.CandidatPoleDto;
 import org.example.doctoratrestapi.dtos.postuler.CandidatPostulesDto;
 import org.example.doctoratrestapi.models.CandidatModel;
 import org.example.doctoratrestapi.models.PostulerModel;

@@ -24,6 +24,7 @@ public class ViewCandidatsService {
         long userId = SecurityUtils.currentUserId();
         Optional<ProfesseurModel> professeur = Optional.ofNullable(professeurRepository.findByUserId(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("Le professeur n'existe pas")));
-        return postulerRepository.findCandidatsPostulesByLabo(professeur.get().getId(), pageable);
+        long laboId = professeur.get().getLaboratoire().getId();        
+        return postulerRepository.findCandidatsPostulesByLabo(laboId, pageable);
     }
 }

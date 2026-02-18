@@ -31,12 +31,10 @@ export const publierSujetsPole = async() => {
   console.log("Réponse de publication: ", data);
   return {message : data.message, success : data.success}; 
 }
+
 export const getResultatsPole = async (decision, page = 0) => {
-  //console.log("Calling getResultatsPole with:", { decision, page });
-  
   return axios.get(`/directeurPole/resultats/${decision}?page=${page}`)
     .then(response => {
-      //console.log("getResultatsPole backend response:", response.data);
       return response;
     })
     .catch(error => {
@@ -45,35 +43,43 @@ export const getResultatsPole = async (decision, page = 0) => {
     });
 };
 
-
 export const publierDecision = (decision) =>
   axios.put(`/directeurPole/resultats/publier/${decision}`);
 
-// --- CORRECTED FUNCTIONS FOR INSCRIPTIONS ---
+// --- Functions for Inscriptions ---
 
-export const getInscriptions = (page = 0, size = 10) => {
-  // Matches Controller: @GetMapping("/inscriptions")
+export const getInscriptions = async(page = 0, size = 10) => {
   return axios.get(`/directeurPole/inscriptions`, {
-    params: { page, size } // Removed 'type' because backend doesn't use it yet
+    params: { page, size }
   }).then(res => res.data);
 };
 
-export const downloadInscriptionsFile = () => {
-  // FIXED: Matches Controller: @GetMapping("/inscriptions/rapport")
-  return axios.get(`/directeurPole/inscriptions/rapport`, {
-    responseType: "blob" 
-  });
+export const downloadInscriptionsFile = async () => {
+  try {
+    const response = await axios.get(`/directeurPole/inscriptions/rapport`, {
+      responseType: "blob" 
+    });
+    
+    // Create a blob from the response
+    const blob = new Blob([response.data], { type: 'text/csv;charset=utf-8;' });
+    
+    // Create a temporary URL for the blob
+    const url = window.URL.createObjectURL(blob);
+    
+    // Create a temporary anchor element and trigger download
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'Rapport_Inscriptions_Pole.csv');
+    document.body.appendChild(link);
+    link.click();
+    
+    // Cleanup
+    link.parentNode.removeChild(link);
+    window.URL.revokeObjectURL(url);
+    
+    return response;
+  } catch (error) {
+    console.error("Error downloading file:", error);
+    throw error;
+  }
 };
-
-/*export const DirecteurPoleApi = {
-    getSujetsPole,
-    getCandidatsPole,
-    getCommissionsPole,
-    getCalendrierPole,
-    updateCalendrierPole,
-    publierSujetsPole,
-    getResultatsPole,
-    publierDecision,
-    getInscriptions,
-    downloadInscriptionsFile
-};*/

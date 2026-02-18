@@ -8,7 +8,7 @@ export default function InscriptionsPolePage() {
   
   // Hook specifically for fetching the "Liste Principale" (LP)
   const { data, isLoading, isError } = useInscriptions(page);
-  
+  console.log("Inscriptions data: ", data);
   // Hook for downloading the file
   const { mutate: download, isLoading: isDownloading } = useDownloadInscriptions();
 

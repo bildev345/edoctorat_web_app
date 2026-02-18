@@ -11,20 +11,21 @@ const PAGE_SIZE = 10;
 /* =========================
    FETCH RECORDS (QUERY)
 ========================= */
-export const useSujetsLabo = (page, filters) => {
+export const useSujetsLabo = (page, filter = "") => {
   return useQuery({
-    queryKey: ["sujetsLabo", page, filters],
+    queryKey: ["sujetsLabo", page, filter],
     queryFn: () =>
       getSujets({
         page,
         size: PAGE_SIZE,
-        filters,
+        name: filter, // Pass filter as 'name' to match backend parameter
       }),
     // React Query v5 syntax
     placeholderData: keepPreviousData, 
     staleTime: 5 * 60 * 1000,
   });
 };
+
 export const useSujetsLaboList = () => {
   return useQuery({
     queryKey: ["sujetsLaboList"],

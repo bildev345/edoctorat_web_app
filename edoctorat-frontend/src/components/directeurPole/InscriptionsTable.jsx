@@ -17,9 +17,9 @@ export default function InscriptionsTable({ data }) {
                     <th>Candidat</th>
                     <th>CNE / CIN</th>
                     <th>Sujet Retenu</th>
-                    <th>Directeur</th>
-                    <th className="text-center">Note Finale</th>
-                    <th className="text-center">Rang</th>
+                    <th>Laboratoire</th>
+                    <th className="text-center">CED</th>
+                    <th className="text-center">Date Dépot</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,13 +34,12 @@ export default function InscriptionsTable({ data }) {
                         </td>
                         <td style={{maxWidth: "250px"}}>
                             <span className="d-inline-block text-truncate" style={{maxWidth: "100%"}} title={row.sujetTitre}>
-                                {row.sujetTitre}
+                                {row.sujet}
                             </span>
                         </td>
-                        <td>{row.directeur}</td>
-                        <td className="text-center fw-bold text-primary">
-                            {typeof row.noteFinale === 'number' ? row.noteFinale.toFixed(2) : row.noteFinale}
-                        </td>
+                        <td>{row.laboratoire}</td>
+                        <td className="text-center fw-bold text-primary">{row.ced}</td>
+                        <td>{row.dateDepot}</td>
                         <td className="text-center">
                             <Badge bg="success" pill>#{row.rang || idx + 1}</Badge>
                         </td>

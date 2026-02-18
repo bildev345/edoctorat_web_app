@@ -2,20 +2,16 @@ package org.example.doctoratrestapi.directeurLabo;
 
 import lombok.RequiredArgsConstructor;
 import org.example.doctoratrestapi.directeurLabo.directeurLaboServices.*;
-import org.example.doctoratrestapi.dtos.candidat.CandidatDto;
 import org.example.doctoratrestapi.dtos.commission.CommissionCreationDto;
 import org.example.doctoratrestapi.dtos.commission.CommissionDTO;
 import org.example.doctoratrestapi.dtos.common.PageResponseDto;
-import org.example.doctoratrestapi.dtos.examination.ExaminationDTO;
 import org.example.doctoratrestapi.dtos.examination.ResultatExaminationDto;
 import org.example.doctoratrestapi.dtos.formationDoctorale.FormationDtoLabo;
 import org.example.doctoratrestapi.dtos.inscription.CandidatInscriptionDto;
 import org.example.doctoratrestapi.dtos.notification.NotificationBulkCreationDto;
 import org.example.doctoratrestapi.dtos.postuler.CandidatPostulesDto;
 import org.example.doctoratrestapi.dtos.professeur.ProfesseurLaboDto;
-import org.example.doctoratrestapi.dtos.sujet.SujetDTO;
 import org.example.doctoratrestapi.dtos.sujet.SujetLaboDto;
-import org.example.doctoratrestapi.dtos.sujet.SujetDtoCreation;
 import org.example.doctoratrestapi.dtos.sujet.SujetLaboDtoCreation;
 import org.example.doctoratrestapi.models.SujetModel;
 import org.springframework.stereotype.Service;
@@ -39,8 +35,8 @@ public class DirecteurLaboServiceFacadeImp implements DirecteurLaboServiceFacade
         return viewCandidatsService.selectCandidatsByLabo(pageable);
 
     }
-    public PageResponseDto<SujetLaboDto> getSujetsByLabo(Pageable pageable) {
-        return sujetService.selectSujetsByLabo(pageable);
+    public PageResponseDto<SujetLaboDto> getSujetsByLabo(Pageable pageable, String filter) {
+        return sujetService.selectSujetsByLabo(pageable, filter);
     }
 
     /*public List<SujetLaboDto> getSujetsByLabo(){

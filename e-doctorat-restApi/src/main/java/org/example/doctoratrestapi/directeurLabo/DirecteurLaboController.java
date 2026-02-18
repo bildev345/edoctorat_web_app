@@ -60,16 +60,17 @@ public class DirecteurLaboController {
     @GetMapping("sujets")
     public ResponseEntity<PageResponseDto<SujetLaboDto>> getSujetsByLabo(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String name
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
 
         return ResponseEntity.ok(
-                directeurLaboServiceFacade.getSujetsByLabo(pageable)
+                directeurLaboServiceFacade.getSujetsByLabo(pageable, name)
         );
     }
 
-    @GetMapping("sujet/add")
+    @PostMapping("sujet/add")
     public ResponseEntity<ApiResponse<Void>> addSujet(@RequestBody SujetLaboDtoCreation sujetDto){
         directeurLaboServiceFacade.addSujet(sujetDto);
         return ResponseEntity.status(HttpStatus.CREATED)

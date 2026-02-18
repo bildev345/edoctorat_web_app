@@ -42,8 +42,7 @@ public interface InscriptionRepository extends JpaRepository<InscriptionModel, L
             s.titre, 
             l.nomLaboratoire, 
             ced.titre, 
-            i.dateDeposerDossier, 
-            i.valider
+            i.dateDeposerDossier
         )
         FROM InscriptionModel i
         JOIN i.candidat c
@@ -69,8 +68,7 @@ public interface InscriptionRepository extends JpaRepository<InscriptionModel, L
             s.titre, 
             l.nomLaboratoire, 
             ced.titre, 
-            i.dateDeposerDossier, 
-            i.valider
+            i.dateDeposerDossier
         )
         FROM InscriptionModel i
         JOIN i.candidat c

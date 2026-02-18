@@ -8,8 +8,7 @@ public record InscriptionPoleDto(
         String nom,
         String prenom,
         String sujet,
-        String laboratoire, // Fetched via Professor
+        String laboratoire,
         String ced,
-        LocalDate dateDepot,
-        Boolean valider
+        LocalDate dateDepot
 ) {}

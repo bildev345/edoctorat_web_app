@@ -11,7 +11,7 @@ export default function InscritsPage() {
 
   return (
     <>
-      <InscritsTable data={data} isLoading={isLoading} />
+      <InscritsTable data={data?.data} isLoading={isLoading} />
 
       <Pagination
         page={page}
